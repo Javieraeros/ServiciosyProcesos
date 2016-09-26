@@ -1,0 +1,8 @@
+table,tr,th{
+  border:2px solid;
+  border-collapse:collapse; 
+}
+table{
+  width:20%;
+  margin: 0 auto;
+}
