@@ -17,7 +17,20 @@ class Texto{
   public function setTexto($T){
     $this->texto=$t;
   }
-  
+  /* 
+	 * Interfaz 
+	 * Cabecera:publci function cuentaPalabras($palabra)
+	 * Proceso:Cuenta el número de veces que se repite una palabra en concreto
+	 * Precondiciones:$palabra debe ser una cadena
+	 * Entrada:Una cadena para la palabra
+	 * Salida:EL número de veces que se repite esa palabra
+	 * Entrada/Salida:
+	 * Postcondiciones:Se distinguirán minúsculas y mayúsculas.Ejemplo:
+                  Si buscamos la palabra "es" en le texto:
+                  Hay una pelota en esos matorrales
+                  La tendremos DOS veces, por esos y por matorrales 
+                  SOLUCIONAAAAAR
+	 */
   public function cuentaPalabras($palabra){
     $arrayPalabra=str_split($palabra);
     $arrayTexto=str_split($this->texto);
@@ -44,5 +57,29 @@ class Texto{
     }
     
     return $total;
+  }
+  
+  /* 
+	 * Interfaz 
+	 * Cabecera:public function indicaPosicion($palabra)
+	 * Proceso:Indica todas las posiciones en la que aparece una palabra
+	 * Precondiciones:
+	 * Entrada:Una cadena
+	 * Salida:Un array con las posiciones de la palabra
+	 * Entrada/Salida:Nada
+	 * Postcondiciones:
+	 */
+  public function indicaPosicion($palabra){
+    $arrayTexto=explode(" ",$this->texto);
+    $tamanyoarray=count($arrayTexto);
+    $resultado=array();
+    $j=0;
+    for($i;$i<$arrayTexto;$i++){
+      if($arrayTexto[$i]=$palabra){
+        $resultado[$j]=$i
+          $j++;
+      }
+    }
+   return $resultado; 
   }
 }
