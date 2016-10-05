@@ -72,12 +72,12 @@ class Texto{
   public function indicaPosicion($palabra){
     $arrayTexto=explode(" ",$this->texto);
     $tamanyoarray=count($arrayTexto);
-    $resultado=array();
+    $resultado=[];
     $j=0;
-    for($i;$i<$arrayTexto;$i++){
-      if($arrayTexto[$i]=$palabra){
-        $resultado[$j]=$i
-          $j++;
+    for($i=0;$i<$tamanyoarray;$i++){
+      if($arrayTexto[$i]==$palabra){
+        $resultado[$j]=$i+1;    //Pongo +1 para que la primera palabra sea la 1, y no la 0
+        $j++;
       }
     }
    return $resultado; 
