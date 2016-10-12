@@ -82,4 +82,59 @@ class Texto{
     }
    return $resultado; 
   }
+	
+	 /* 
+	 * Interfaz 
+	 * Cabecera:public function sustituyePalabras($palabra1,$palabra2)
+	 * Proceso:Sustituye todas las palabras "$palabra1" por "$palabra2" y viceversa
+	 * Precondiciones:
+	 * Entrada:Dos cadenas
+	 * Salida:El texto cambiado
+	 * Entrada/Salida:Nada
+	 * Postcondiciones:
+	 */
+	public function sustituyePalabras($palabra1,$palabra2){
+		$arrayTexto=explode(" ",$this->texto);
+		$tamanyoarray=count($arrayTexto);
+		
+		//guardamos las posiciones de ambas palabras
+		$posicionespalabra1=$this->indicaPosicion($palabra1);
+		$posicionespalabra2=$this->indicaPosicion($palabra2);
+		
+		
+		//guardamos el tamaño de los arrays para recorrerlos
+		$tamanyoarrayPalabra1=count($posicionespalabra1);
+		$tamanyoarrayPalabra2=count($posicionespalabra2);
+		
+		//En las posiciones en las que nos indique el array de palabra 1, cambiamos en el texto las palabras
+		//del array 2
+		for($i=0;$i<$tamanyoarrayPalabra1;$i++){
+			$arrayTexto[$posicionespalabra1[$i]-1]=$palabra2; //Pongo menos uno porque las posiciones de palabra empiezan en 1
+		}
+		
+		//Igual para la palabra 2
+		for($i=0;$i<$tamanyoarrayPalabra2;$i++){
+			$arrayTexto[$posicionespalabra2[$i]-1]=$palabra1;
+		}
+		$this->texto=implode(" ",$arrayTexto);
+	}
+	
+	/* 
+	 * Interfaz 
+	 * Cabecera:public function sustituyePosiciones($posicion1,$posicion2)
+	 * Proceso:Sustituye la palabra de la posicion1 por la de posicion2 y viceversa
+	 * Precondiciones:
+	 * Entrada:Dos cadenas
+	 * Salida:El texto cambiado
+	 * Entrada/Salida:Nada
+	 * Postcondiciones:
+	 */
+	public function sustituyePosiciones($posicion1,$posicion2){
+		$arrayTexto=explode(" ",$this->texto);
+		$aux=$arrayTexto[$posicion1];
+		$arrayTexto[$posicion1]=$arrayTexto[$posicion2];
+		$arrayTexto[$posicion2]=$aux;
+		$this->texto=implode(" ",$arrayTexto);
+	}
+	
 }
